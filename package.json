@@ -1,0 +1,21 @@
+{
+  "name": "room-picker",
+  "scripts": {
+    "start": "imba -w server.imba",
+    "build": "imba build server.imba"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "imba": "^2.0.0-alpha.129",
+    "robot3": "^0.2.19",
+    "uuid": "^8.3.2"
+  },
+  "devDependencies": {
+    "@types/node": "^14.14.22"
+  },
+  "description": "",
+  "version": "1.0.0",
+  "homepage": "https://github.com//room-picker",
+  "author": "Author Name (https://github.com/)",
+  "license": "ISC"
+}
