@@ -23,6 +23,10 @@ def computeRooms
 	computedRooms = generatedRooms.flat!.map do $1.name
 	createRoomMachine(computedRooms)
 
+def resetRooms
+	computedRooms = []
+	store.rooms = []
+
 tag Counter
 	prop name
 	prop qty
@@ -36,7 +40,7 @@ tag Counter
 		roomsTemplate[idx].qty-- if roomsTemplate[idx].qty > 0
 	
 	css .square::before content:"" pt:100% d:block
-	css button c:white fs:4rem fw:900 cursor:pointer c@hover:orange2
+	css button c:white fs:4rem fw:900 cursor:pointer c@hover:orange2 bgc:transparent p:0
 	
 	<self.square[pos:relative bg:rose4 c:white ta:center bxs:md rd:md]>
 		<div[pos:absolute t:0 l:0 w:100% h:100% d:flex bxs:lg fl:1 ai:center jc:space-between]>
@@ -51,9 +55,10 @@ tag RoomTally
 	<self>
 		<div[bgc:fuschia4 bxs:lg rd:lg p:4]>
 			<button @click=computeRooms!> "Confirm rooms"
-			<button @click=(computedRooms = [])> "Reset"
+			<button @click=resetRooms> "Reset"
 			for room in computedRooms
-				<div[fs:sm mr:2 my:2 d:inline-flex c:white bgc:fuschia4 px:1.5 py:0.5 rd:full bw:2 bs:solid bc:white]> 
+				<div[fs:sm mr:2 my:2 d:inline-flex c:white bgc:fuschia4 
+				px:1.5 py:0.5 rd:full bw:2px bs:solid bc:white]> 
 					"{room}" 
 		
 tag room-picker
@@ -65,4 +70,4 @@ tag room-picker
 			<div[mt:1rem grid-gap:1rem gtc:repeat(auto-fill, minmax(11rem, 1fr)) d:grid]>
 				for {qty, name},idx of roomsTemplate
 					<Counter name=name qty=qty idx=idx>
-			<Navigation>
+			<Navigation nextDisabled=(!(store.rooms.length > 0))>

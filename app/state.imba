@@ -17,7 +17,11 @@ def stateFixer state
 
 export def createRoomMachine rooms
 	let pickerSteps =
-		'room-picker': state(transition('forward', rooms[0]))
+		'first-form': state(transition('forward', 'second-form'))
+		'second-form': state(transition('forward', 'room-picker')
+							transition('backward', 'first-form'))
+		'room-picker': state(transition('forward', rooms[0]),
+							transition('backward', 'second-form'))
 		'box-picker': state(transition('backward', rooms[rooms.length - 1]))
 	
 	let roomsMap = rooms.reduce(&,pickerSteps) do |acc, room, idx, arr|
@@ -31,10 +35,16 @@ export def createRoomMachine rooms
 			)
 		}
 	
-	let roomState = createMachine(roomsMap)
+	let initial = store.rooms.length > 0 ? 'room-picker' : 'first-form'
+	console.log("initial: {store.rooms.length}")
+	
+	let roomState = createMachine(initial, roomsMap)
 	global.service = interpret(roomState, do |service|
-		global.appState = stateFixer(global.service.machine.current))
+		global.appState = stateFixer(global.service.machine.current)
+		console.log global.appState)
 
-	global.appState = 'room-picker'
+	global.appState = global.service.machine.current
+	console.log global.appState
+	# global.service.send('toRoomPicker')
 
 

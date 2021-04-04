@@ -2,8 +2,14 @@ class Store
 	constructor
 		global.store = self
 	
+	data = {additional: ""}
 	rooms = []
 	currentRoom = ""
+	boxes = [
+		{name: 'small', qty: 0},
+		{name: 'medium', qty: 0},
+		{name: 'large', qty: 0}
+	]
 	
 	def getFurniture
 		(rooms.find(do $1.name === currentRoom)).furniture
