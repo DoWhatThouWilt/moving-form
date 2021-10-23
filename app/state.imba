@@ -22,7 +22,9 @@ export def createRoomMachine rooms
 							transition('backward', 'first-form'))
 		'room-picker': state(transition('forward', rooms[0]),
 							transition('backward', 'second-form'))
-		'box-picker': state(transition('backward', rooms[rooms.length - 1]))
+		'box-picker': state(transition('backward', rooms[rooms.length - 1]),
+							transition('forward', 'review'))
+		'review': state(transition('backward', 'box-picker'))
 	
 	let roomsMap = rooms.reduce(&,pickerSteps) do |acc, room, idx, arr|
 		let nextRoom = idx === arr.length - 1 ? 'box-picker' : arr[idx + 1]
@@ -36,7 +38,7 @@ export def createRoomMachine rooms
 		}
 	
 	let initial = store.rooms.length > 0 ? 'room-picker' : 'first-form'
-	console.log("initial: {store.rooms.length}")
+	# console.log("initial: {store.rooms.length}")
 	
 	let roomState = createMachine(initial, roomsMap)
 	global.service = interpret(roomState, do |service|

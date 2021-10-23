@@ -4,6 +4,7 @@ import './furniture-picker'
 import './box-picker'
 import './first-form'
 import './second-form'
+import './review'
 import { createRoomMachine } from './state'
 import store from './store'
 
@@ -13,7 +14,8 @@ global css
 	# button, p m:0 p:0 bd:0 bgc:transparent
 
 createRoomMachine []
-global.appState = 'box-picker'
+# global.appState = 'second-form'
+# global.appState = 'review'
 
 tag app
 	css button fs:lg px:6 py:2 mx:6 bxs:lg fw:900 rd:lg c:white bgc:fuschia4 cursor:pointer

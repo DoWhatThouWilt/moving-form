@@ -3,7 +3,7 @@ import Form from './form/Form'
 import store from './store'
 import {secondSchema} from './form/secondSchema'
 
-const apikey = "AIzaSyBuB0RHM5P8r4jwh16k2MPtfH6crQmbwvM"
+const apikey = ""
 const urlBase = "https://maps.googleapis.com/maps/api/geocode/json?address="
 
 def isMultiStory? option
@@ -38,7 +38,7 @@ tag second-form < Form
 	
 	<self>
 		# <pre[pos:fixed t:0 r:0]> JSON.stringify(values, null, 2)
-		<Navigation>
+		# <Navigation>
 		<div[mt:8 mx@sm:auto w@sm:full max-width:1024px]>
 			<div[bgc:white py:8 px:6 bxs:md rd:lg px@sm:10]>
 				<form.wrapper @submit.prevent=submitHandler(secondSchema)>

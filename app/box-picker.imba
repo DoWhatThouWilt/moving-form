@@ -6,6 +6,7 @@ tag box-picker < Form
 	css & c:gray7
 	css ol list-style-type:circle
 	<self>
+		# <Navigation>
 		<div[mt:8 mx@sm:auto w@sm:full max-width:1024px]>
 			<div[bgc:white py:16 px:6 bxs:md rd:lg px@sm:10]>
 				<div[fs:3xl fw:600 c:gray8]> "Select boxes"
@@ -41,5 +42,5 @@ tag Counter
 		<div[pos:absolute t:0 l:0 w:100% h:100% d:flex bxs:lg fl:1 ai:center jc:space-between]>
 			<button[ml:2] @click=(store.boxes[idx].qty++)> "+"
 			<div[fs:5rem fw:500]> "{qty}"
-			<button[mr:2] @click=(store.boxes[idx].qty--)> "-"
+			<button[mr:2] @click=(store.boxes[idx].qty-- if store.boxes[idx].qty > 0)> "-"
 		<div[pos:absolute b:2.5 w:100% fs:xl fw:600]> "{name}"

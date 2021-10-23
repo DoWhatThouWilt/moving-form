@@ -22,7 +22,7 @@ tag first-form < Form
 	
 	<self>
 		<div[mt:8 mx@sm:auto w@sm:full max-width:768px]>
-			<Navigation prev=false>
+			# <Navigation prev=false>
 			# <pre> JSON.stringify(store.data, null, 2)
 			<div[bgc:white py:16 px:6 bxs:md rd:lg px@sm:10]>
 				<form.wrapper[mb:0] @submit.prevent=submitHandler(initialSchema)>

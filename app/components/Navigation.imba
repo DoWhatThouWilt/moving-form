@@ -8,7 +8,7 @@ export default tag Navigation
 	prop values = {}
 
 	css button fs:lg px:18 py:2 mx@sm:20 mx:4 bxs:sm fw:900 rd:md c:white bgc:gray5 cursor:pointer
-		tween:all .3s cubic-in-out bgc@hover:indigo5
+		tween:all .3s cubic-in-out bgc@hover:indigo5 outline@focus:none
 		&.next bg:indigo5 tween:all .3s cubic-in-out bgc@hover:rose5
 	css button@disabled bgc:gray6 c:gray4 cursor:not-allowed
 		

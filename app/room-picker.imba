@@ -1,4 +1,5 @@
-import { roomData } from './roomData'
+# import { roomData } from './roomData'
+import { roomData } from './data/rooms-and-furniture.js'
 import {createRoomMachine} from './state'
 import { v4 as uuidv4 } from 'uuid'
 import Navigation from './components/Navigation'
@@ -42,7 +43,7 @@ tag Counter
 	css .square::before content:"" pt:100% d:block
 	css button c:white fs:4rem fw:900 cursor:pointer c@hover:orange2 bgc:transparent p:0
 	
-	<self.square[pos:relative bg:rose4 c:white ta:center bxs:md rd:md]>
+	<self.square[pos:relative bg:gray4 c:white ta:center bxs:md rd:md]>
 		<div[pos:absolute t:0 l:0 w:100% h:100% d:flex bxs:lg fl:1 ai:center jc:space-between]>
 			<button[ml:2] @click=increment(idx)> "+"
 			<div[fs:5rem fw:500]> "{qty}"
@@ -51,13 +52,13 @@ tag Counter
 
 tag RoomTally
 	css
-		button bgc:white c:fuschia4 d:inline-flex py:2 px:4 fw:900 rd:lg mr:2 my:2 bxs:xl
+		button bgc:white c:gray4 d:inline-flex py:2 px:4 fw:900 rd:lg mr:2 my:2 bxs:xl
 	<self>
-		<div[bgc:fuschia4 bxs:lg rd:lg p:4]>
+		<div[bgc:gray5 bxs:lg rd:lg p:4]>
 			<button @click=computeRooms!> "Confirm rooms"
 			<button @click=resetRooms> "Reset"
 			for room in computedRooms
-				<div[fs:sm mr:2 my:2 d:inline-flex c:white bgc:fuschia4 
+				<div[fs:sm mr:2 my:2 d:inline-flex c:white bgc:gray5 
 				px:1.5 py:0.5 rd:full bw:2px bs:solid bc:white]> 
 					"{room}" 
 		
@@ -65,7 +66,8 @@ tag room-picker
 	css button fs:lg px:6 py:2 mx:6 bxs:lg fw:900 rd:lg c:white bgc:fuschia4 cursor:pointer
 		tween:all .3s cubic-in-out bgc@hover:rose5
 	<self>
-		<div[max-width:70rem max-height:70rem mx:auto]>
+		# <Navigation>
+		<div[max-width:70rem max-height:100rem mx:auto]>
 			<RoomTally>
 			<div[mt:1rem grid-gap:1rem gtc:repeat(auto-fill, minmax(11rem, 1fr)) d:grid]>
 				for {qty, name},idx of roomsTemplate
