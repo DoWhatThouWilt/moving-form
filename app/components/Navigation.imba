@@ -1,6 +1,7 @@
 import * as yup from 'yup'
 
 export default tag Navigation
+	prop demo = false
 	prop nextDisabled = false
 	prop next = true
 	prop prev = true
@@ -18,6 +19,6 @@ export default tag Navigation
 	<self>
 		<div[mx:auto d:flex jc:center mt:4rem]>
 			if prev
-				<button @click=(global.service.send('backward'))> "Back"
+				<button @click=(global.service.send('backward'))> "{demo ? 'Go Back' : 'Back'}"
 			if next
-				<button.next disabled=nextDisabled @click=proceed> "Next"
+				<button.next disabled=nextDisabled @click=proceed>  "{demo ? 'Skip Forward' : 'Next'}"

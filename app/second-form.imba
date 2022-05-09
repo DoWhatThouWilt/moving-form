@@ -38,7 +38,7 @@ tag second-form < Form
 	
 	<self>
 		# <pre[pos:fixed t:0 r:0]> JSON.stringify(values, null, 2)
-		# <Navigation>
+		<Navigation demo=true>
 		<div[mt:8 mx@sm:auto w@sm:full max-width:1024px]>
 			<div[bgc:white py:8 px:6 bxs:md rd:lg px@sm:10]>
 				<form.wrapper @submit.prevent=submitHandler(secondSchema)>
